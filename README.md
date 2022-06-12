@@ -1,6 +1,6 @@
 ## Mengunduh Repository
 gunakan perintah git clone untuk mengunduh repository
-
+git clone https://github.com/srirahma/test-user-stories.git   branch test
 
 ## api membuat request pertemanan
 jalankan http://localhost:8000/api/request
