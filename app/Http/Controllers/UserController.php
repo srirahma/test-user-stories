@@ -17,12 +17,15 @@ class UserController extends Controller
 
         $check = Master_friend_request::where([
     			['email_requestor',$req->email_requestor],
-    			['email_receiver',$req->email_receiver],
+    			['email_receiver',$req->email_receiver]
         ])
         ->first();
 
         if ($check) {
-          return response()->json(['success' => false, 'message' => 'Request canceled']);
+          if ($check->status == 'blocked') {
+            return response()->json(['message' => 'Access denied']);
+          }
+          return response()->json(['message' => 'Data already exists']);
         }
         if ($req->email_requestor == $req->email_receiver) {
           return response()->json(['success' => false, 'data' => $data]);
@@ -50,15 +53,20 @@ class UserController extends Controller
       try {
         $status = $req->action;
         $data = [
-          'requestor' => $req->email_requestor,
-          'to'        => $req->email_receiver
+          'requestor' => $req->email_requestor ?? '',
+          'to'        => $req->email_receiver ?? ''
         ];
 
-        $save = Master_friend_request::where('email_requestor', $req->email_requestor)->where('email_receiver', $req->email_receiver)->first();
-        $save->status = $status;
+        $save = Master_friend_request::where('email_requestor', $req->email_requestor ?? '')->where('email_receiver', $req->email_receiver ?? '')->first();
 
-        if ($save->save()) {
-          return response()->json(['success' => true, 'message' => $status]);
+        if ($save) {
+          $save->status = $status;
+
+          if ($save->save()) {
+            return response()->json(['success' => true, 'message' => $status]);
+          }
+        }else{
+          return response()->json(['message' => false]);
         }
 
       }catch (\Exception $e) {
