@@ -2,6 +2,9 @@
 gunakan perintah git clone untuk mengunduh repository
 git clone https://github.com/srirahma/test-user-stories.git   branch test
 
+## running docker
+docker-compose up -d
+
 ## api membuat request pertemanan
 jalankan http://localhost:8000/api/request
 parameter yang dibutuhkan : email_requestor dan email_receiver
