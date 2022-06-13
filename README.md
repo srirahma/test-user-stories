@@ -1,6 +1,7 @@
 ## Mengunduh Repository
 gunakan perintah git clone untuk mengunduh repository
 git clone https://github.com/srirahma/test-user-stories.git   branch test
+.env = .env.test
 
 ## running docker
 docker-compose up -d
