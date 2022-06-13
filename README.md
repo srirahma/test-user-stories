@@ -2,6 +2,7 @@
 gunakan perintah git clone untuk mengunduh repository
 git clone https://github.com/srirahma/test-user-stories.git   branch test
 .env = .env.test
+file migration = 2022_06_13_031519_create_master_user_stories.php
 
 ## running docker
 docker-compose up -d
