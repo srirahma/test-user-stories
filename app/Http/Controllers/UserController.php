@@ -11,7 +11,7 @@ class UserController extends Controller
     public function request(Request $req){
       try {
         $data = [
-          'requestor' => $req->email_requestor, //session
+          'requestor' => $req->email_requestor,
           'to'        => $req->email_receiver
         ];
 

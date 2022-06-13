@@ -4,6 +4,8 @@ git clone https://github.com/srirahma/test-user-stories.git   branch test
 
 ## running docker
 docker-compose up -d
+container name : con_userstories, app_userstories
+image name : webserver_laravel:1.0, app_laravel:1.0
 
 ## api membuat request pertemanan
 jalankan http://localhost:8000/api/request
